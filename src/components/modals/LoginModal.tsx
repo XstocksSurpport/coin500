@@ -172,7 +172,7 @@ export function LoginModal({ open, onClose }: LoginModalProps) {
             )}
           <p className="mt-3 text-xs text-[#9ca3af]">
             {"\u6211\u4eec\u4f1a\u5411\u8be5\u90ae\u7bb1\u53d1\u9001 6 \u4f4d\u6570\u5b57\u9a8c\u8bc1\u7801\u3002"}
-            {"Resend \u6d4b\u8bd5\u671f\u4ec5\u652f\u6301\u6ce8\u518c\u90ae\u7bb1\u6536\u4fe1\uff1b\u9a8c\u8bc1\u57df\u540d\u540e\u53ef\u53d1\u4efb\u610f\u90ae\u7bb1\u3002"}
+            {"\u9a8c\u8bc1\u7801\u5c06\u4ece noreply@aegisai.sbs \u53d1\u9001\uff0c\u8bf7\u67e5\u6536\u90ae\u4ef6\u4e0e\u5783\u573e\u90ae\u4ef6\u3002"}
           </p>
             <button
               type="submit"
