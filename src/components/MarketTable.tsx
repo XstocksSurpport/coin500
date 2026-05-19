@@ -36,13 +36,13 @@ export function MarketTable({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#e5e9ef] bg-white shadow-sm">
-      <div className="grid grid-cols-[minmax(140px,1.4fr)_80px_100px_120px_88px_72px] gap-2 border-b border-[#e8ecf1] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-[#9ca3af]">
+      <div className="grid grid-cols-[minmax(140px,1.4fr)_80px_100px_120px_88px_96px] gap-2 border-b border-[#e8ecf1] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-[#9ca3af]">
         <span>{"\u6807\u7684"}</span>
         <span>{"\u6da8\u8dcc"}</span>
         <span>{"\u4ef7\u683c"}</span>
         <span>{"\u533a\u95f4"}</span>
         <span className="text-right">{"\u64cd\u4f5c"}</span>
-        <span className="text-center">{"\u4ea4\u6613"}</span>
+        <span className="text-center">Agent{"\u4ea4\u6613"}</span>
       </div>
 
       <div className="flex-1 overflow-y-auto">
@@ -104,7 +104,7 @@ function InstrumentRow({
       tabIndex={0}
       onClick={onSelect}
       onKeyDown={(e) => e.key === "Enter" && onSelect()}
-      className={`grid cursor-pointer grid-cols-[minmax(140px,1.4fr)_80px_100px_120px_88px_72px] items-center gap-2 border-b border-[#f0f3f7] px-4 py-2 text-sm transition hover:bg-[#f8fafc] ${
+      className={`grid cursor-pointer grid-cols-[minmax(140px,1.4fr)_80px_100px_120px_88px_96px] items-center gap-2 border-b border-[#f0f3f7] px-4 py-2 text-sm transition hover:bg-[#f8fafc] ${
         active ? "bg-[#0051ff]/5" : ""
       }`}
     >
@@ -173,9 +173,9 @@ function InstrumentRow({
         <button
           type="button"
           onClick={onTrade}
-          className="rounded-lg bg-[#0051ff] px-3 py-1.5 text-xs font-semibold text-white hover:bg-[#0046dd]"
+          className="rounded-lg bg-[#0051ff] px-2 py-1.5 text-xs font-semibold text-white hover:bg-[#0046dd]"
         >
-          {"\u4ea4\u6613"}
+          Agent{"\u4ea4\u6613"}
         </button>
       </div>
     </div>

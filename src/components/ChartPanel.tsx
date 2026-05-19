@@ -262,10 +262,10 @@ export function ChartPanel({ instrument, market, onTrade }: ChartPanelProps) {
             <button
               type="button"
               onClick={onTrade}
-              className="rounded-lg bg-[#0051ff] px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#0046dd]"
-            >
-              {"\u4ea4\u6613"}
-            </button>
+            className="rounded-lg bg-[#0051ff] px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#0046dd]"
+          >
+            Agent{"\u4ea4\u6613"}
+          </button>
           </div>
         )}
         <div ref={containerRef} className="absolute inset-0" />

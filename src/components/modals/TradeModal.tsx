@@ -74,7 +74,7 @@ export function TradeModal({
         <div className="flex items-center justify-between border-b border-[#e8ecf1] px-5 py-4">
           <div>
             <h2 className="text-lg font-semibold text-[#1a1d21]">
-              {"\u4ea4\u6613"}
+              Agent{"\u4ea4\u6613"}
             </h2>
             <p className="text-sm text-[#6b7280]">{instrument.symbol}</p>
           </div>
@@ -180,7 +180,7 @@ export function TradeModal({
             onClick={handleSubmit}
             className="w-full rounded-lg bg-[#0051ff] py-2.5 text-sm font-semibold text-white hover:bg-[#0046dd]"
           >
-            {"\u786e\u8ba4\u4ea4\u6613"}
+            {"\u786e\u8ba4Agent\u4ea4\u6613"}
           </button>
         </div>
       </div>
