@@ -14,7 +14,7 @@ GitHub → **Settings** → **General** → **Danger Zone** → **Change visibil
 | Variable | Value |
 |----------|--------|
 | `RESEND_API_KEY` | Your Resend key |
-| `EMAIL_FROM` | `Aegisai <onboarding@resend.dev>` |
+| `EMAIL_FROM` | `Aegisai <noreply@aegisai.sbs>` |
 | `AUTH_SECRET` | Random 32+ char string |
 | `NEXT_PUBLIC_EVM_WALLET_ADDRESS` | Your EVM deposit address |
 | `NEXT_PUBLIC_SOL_WALLET_ADDRESS` | Your Solana deposit address |

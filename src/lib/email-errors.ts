@@ -15,8 +15,13 @@ export function mapEmailSendError(message: string): string {
     return "邮件 API 密钥无效，请检查 RESEND_API_KEY";
   }
 
-  if (lower.includes("domain") && lower.includes("verify")) {
-    return "发件域名未验证，请在 Resend 完成域名验证后重试";
+  if (
+    lower.includes("domain") &&
+    (lower.includes("not verified") ||
+      lower.includes("is not verified") ||
+      lower.includes("must be verified"))
+  ) {
+    return "发件域名未验证，请确认 EMAIL_FROM 使用已验证域名（如 noreply@aegisai.sbs）";
   }
 
   return "验证码发送失败，请稍后重试";

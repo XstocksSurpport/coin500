@@ -4,7 +4,7 @@ import { SITE_NAME } from "./constants";
 
 function emailFrom(): string {
   return (
-    process.env.EMAIL_FROM ?? `Aegisai <onboarding@resend.dev>`
+    process.env.EMAIL_FROM ?? `Aegisai <noreply@aegisai.sbs>`
   );
 }
 
