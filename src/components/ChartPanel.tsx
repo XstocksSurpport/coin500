@@ -204,8 +204,8 @@ export function ChartPanel({ instrument, market, onTrade }: ChartPanelProps) {
     : null;
 
   return (
-    <div className="flex h-full min-h-[320px] flex-col overflow-hidden rounded-xl border border-[#e5e9ef] bg-white shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e8ecf1] px-3 py-2">
+    <div className="flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border border-[#e5e9ef] bg-white p-3 shadow-lg md:rounded-xl md:p-0 md:shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e8ecf1] px-1 py-3 md:px-3 md:py-2">
         {instrument ? (
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="font-semibold text-[#1f2937]">{instrument.symbol}</span>

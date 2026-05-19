@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Header } from "./Header";
-import { Sidebar } from "./Sidebar";
+import { Sidebar, MobileNavDrawer } from "./Sidebar";
 import { MarketTable } from "./MarketTable";
 import { ChartPanel } from "./ChartPanel";
 import { LoginModal } from "./modals/LoginModal";
@@ -28,6 +28,16 @@ export function TradingDesk() {
   const [tradeTarget, setTradeTarget] = useState<Instrument | null>(null);
   const [watchTick, setWatchTick] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileNavOpen]);
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -162,12 +172,20 @@ export function TradingDesk() {
         }}
         search={search}
         onSearchChange={setSearch}
+        onMenuClick={() => setMobileNavOpen(true)}
+      />
+
+      <MobileNavDrawer
+        open={mobileNavOpen}
+        market={market}
+        onClose={() => setMobileNavOpen(false)}
+        onMarketChange={setMarket}
       />
 
       <div className="flex min-h-0 flex-1">
         <Sidebar market={market} onMarketChange={setMarket} />
 
-        <main className="flex min-w-0 flex-1 flex-col gap-3 p-3">
+        <main className="flex w-full min-w-0 flex-1 flex-col gap-4 px-4 py-3 md:gap-3 md:p-3">
           <h1 className="px-1 text-base font-semibold text-[#1f2937]">
             {marketTitle}
           </h1>
