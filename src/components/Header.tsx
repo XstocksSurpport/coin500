@@ -1,0 +1,168 @@
+﻿"use client";
+
+import {
+  Eye,
+  EyeOff,
+  Search,
+  LogOut,
+  Wallet,
+  Copy,
+  Check,
+} from "lucide-react";
+import { useState } from "react";
+import { SITE_NAME, WALLET_ADDRESS } from "@/lib/constants";
+import { useAuth } from "@/context/AuthContext";
+import { formatUsd, shortenAddress } from "@/lib/format";
+
+interface HeaderProps {
+  onLogin: () => void;
+  onDeposit: () => void;
+  search: string;
+  onSearchChange: (v: string) => void;
+}
+
+export function Header({
+  onLogin,
+  onDeposit,
+  search,
+  onSearchChange,
+}: HeaderProps) {
+  const { user, isLoading, logout, balanceHidden, setBalanceHidden } = useAuth();
+  const [copied, setCopied] = useState(false);
+
+  const equity = user?.balance ?? 0;
+  const available = equity;
+  const margin = equity * 0.12;
+  const pnl = equity * 0.018;
+
+  const copyWallet = async () => {
+    await navigator.clipboard.writeText(WALLET_ADDRESS);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const mask = (v: string) => (balanceHidden ? "••••••" : v);
+
+  return (
+    <header className="flex h-14 shrink-0 items-center gap-4 border-b border-[#e5e9ef] bg-white px-4">
+      <div className="flex items-center gap-2">
+        <span className="text-xl font-bold tracking-tight text-[#0051ff]">
+          {SITE_NAME}
+        </span>
+      </div>
+
+      <div className="mx-4 flex flex-1 max-w-xl">
+        <div className="relative w-full">
+          <Search
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#9ca3af]"
+            size={18}
+          />
+          <input
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="搜索标的"
+            className="w-full rounded-full border border-[#e5e9ef] bg-[#f5f7f9] py-2 pl-10 pr-4 text-sm outline-none focus:border-[#0051ff] focus:bg-white"
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-5 text-xs text-[#6b7280]">
+        {user && (
+          <>
+            <Stat label="可用" value={mask(formatUsd(available))} />
+            <Stat label="净值" value={mask(formatUsd(equity))} />
+            <Stat label="保证金" value={mask(formatUsd(margin))} />
+            <Stat
+              label="盈亏"
+              value={mask(formatUsd(pnl))}
+              accent={pnl >= 0 ? "up" : "down"}
+            />
+            <button
+              type="button"
+              onClick={() => setBalanceHidden(!balanceHidden)}
+              className="rounded p-1 hover:bg-[#f0f3f7]"
+              aria-label="Toggle balance"
+            >
+              {balanceHidden ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          </>
+        )}
+      </div>
+
+      <div className="flex items-center gap-2">
+        {isLoading ? (
+          <span className="px-3 text-sm text-[#9ca3af]">...</span>
+        ) : user ? (
+          <>
+            <button
+              type="button"
+              onClick={onDeposit}
+              className="rounded-lg bg-[#0051ff] px-4 py-1.5 text-sm font-semibold text-white hover:bg-[#0046dd]"
+            >
+              充值
+            </button>
+            <div className="hidden items-center gap-2 rounded-lg border border-[#e5e9ef] px-3 py-1.5 sm:flex">
+              <Wallet size={14} className="text-[#0051ff]" />
+              <span className="font-mono text-xs text-[#374151]">
+                {shortenAddress(user.walletAddress)}
+              </span>
+              <button
+                type="button"
+                onClick={copyWallet}
+                className="text-[#0051ff]"
+              >
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+              </button>
+            </div>
+            <span className="hidden max-w-[120px] truncate text-xs text-[#9ca3af] lg:inline">
+              {user.email}
+            </span>
+            <button
+              type="button"
+              onClick={logout}
+              className="rounded-lg border border-[#e5e9ef] p-2 hover:bg-[#f5f7f9]"
+              title="Logout"
+            >
+              <LogOut size={16} />
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={onLogin}
+            className="rounded-lg bg-[#0051ff] px-5 py-1.5 text-sm font-semibold text-white hover:bg-[#0046dd]"
+          >
+            登录
+          </button>
+        )}
+      </div>
+    </header>
+  );
+}
+
+function Stat({
+  label,
+  value,
+  accent,
+}: {
+  label: string;
+  value: string;
+  accent?: "up" | "down";
+}) {
+  return (
+    <div className="hidden flex-col sm:flex">
+      <span>{label}</span>
+      <span
+        className={`text-sm font-semibold ${
+          accent === "up"
+            ? "text-[#00a651]"
+            : accent === "down"
+              ? "text-[#e53935]"
+              : "text-[#1f2937]"
+        }`}
+      >
+        {value}
+      </span>
+    </div>
+  );
+}

@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coin500
 
-## Getting Started
+Professional crypto trading terminal UI (demo). Reference layout similar to Plus500.
 
-First, run the development server:
+## Features
+
+- **Primary market**: Live Solana meme tokens via DexScreener (browser fetch). Optional `AVE_API_KEY` in `.env.local` for Ave.ai meme ranks on the server.
+- **Secondary market**: Top 50 USDT pairs from Binance
+- **Real email login**: 6-digit verification code sent to inbox (Resend or SMTP)
+- Deposit addresses configured via environment variables (not in source)
+- **Deposit** across major EVM networks (UI only)
+- Candlestick chart with Binance klines for secondary market
+
+## Run
 
 ```bash
+cd coin500
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Email login setup (required for real login)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and configure **one** email provider:
 
-## Learn More
+### Option A: Resend (recommended)
 
-To learn more about Next.js, take a look at the following resources:
+1. Register at [resend.com](https://resend.com)
+2. Create an API key and verify your sending domain (or use `onboarding@resend.dev` for testing to your own account email)
+3. Add to `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+RESEND_API_KEY=re_xxxx
+EMAIL_FROM=Coin500 <onboarding@resend.dev>
+AUTH_SECRET=use-a-long-random-string
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Option B: SMTP (QQ / 163 / Gmail)
 
-## Deploy on Vercel
+```env
+SMTP_HOST=smtp.qq.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=your@qq.com
+SMTP_PASS=your-smtp-authorization-code
+EMAIL_FROM=Coin500 <your@qq.com>
+AUTH_SECRET=use-a-long-random-string
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Restart `npm run dev` after changing env. Login flow: enter email → receive 6-digit code → verify → session kept 30 days on refresh.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Optional Ave.ai data
+
+Set `AVE_API_KEY` in `.env.local` for live primary market listings.
