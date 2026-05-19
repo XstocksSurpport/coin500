@@ -20,7 +20,7 @@ export default function Icon() {
           color: "#ffffff",
         }}
       >
-        C
+        A
       </div>
     ),
     { ...size },

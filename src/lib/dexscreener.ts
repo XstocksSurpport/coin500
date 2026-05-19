@@ -37,7 +37,7 @@ async function fetchJson<T>(url: string): Promise<T> {
     cache: "no-store",
     headers: {
       Accept: "application/json",
-      "User-Agent": "Coin500/1.0",
+      "User-Agent": "Aegisai/1.0",
     },
   });
   if (!res.ok) throw new Error(`DexScreener ${res.status} ${url}`);

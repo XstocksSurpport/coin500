@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} | Trading`,
+  title: `${SITE_NAME} | Trading Terminal`,
   description: "Professional crypto trading terminal",
 };
 

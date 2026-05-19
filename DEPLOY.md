@@ -1,4 +1,4 @@
-# Deploy Coin500
+# Deploy Aegisai
 
 Code is on [GitHub](https://github.com/XstocksSurpport/coin500). **No API keys or wallets are in the repository.**
 
@@ -14,7 +14,7 @@ GitHub → **Settings** → **General** → **Danger Zone** → **Change visibil
 | Variable | Value |
 |----------|--------|
 | `RESEND_API_KEY` | Your Resend key |
-| `EMAIL_FROM` | `Coin500 <onboarding@resend.dev>` |
+| `EMAIL_FROM` | `Aegisai <onboarding@resend.dev>` |
 | `AUTH_SECRET` | Random 32+ char string |
 | `NEXT_PUBLIC_EVM_WALLET_ADDRESS` | Your EVM deposit address |
 | `NEXT_PUBLIC_SOL_WALLET_ADDRESS` | Your Solana deposit address |

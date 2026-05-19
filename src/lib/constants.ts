@@ -1,6 +1,6 @@
 import type { DepositNetwork } from "./types";
 
-export const SITE_NAME = "Coin500";
+export const SITE_NAME = "Aegisai";
 
 export const WALLET_ADDRESS =
   process.env.NEXT_PUBLIC_EVM_WALLET_ADDRESS ??

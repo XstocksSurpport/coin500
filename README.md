@@ -1,4 +1,4 @@
-# Coin500
+# Aegisai
 
 Professional crypto trading terminal UI (demo). Reference layout similar to Plus500.
 
@@ -45,7 +45,7 @@ SMTP_PORT=465
 SMTP_SECURE=true
 SMTP_USER=your@qq.com
 SMTP_PASS=your-smtp-authorization-code
-EMAIL_FROM=Coin500 <your@qq.com>
+EMAIL_FROM=Aegisai <your@qq.com>
 AUTH_SECRET=use-a-long-random-string
 ```
 
