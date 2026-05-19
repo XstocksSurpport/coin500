@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: coin500
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: NEXT_PUBLIC_EVM_WALLET_ADDRESS
+        sync: false
+      - key: NEXT_PUBLIC_SOL_WALLET_ADDRESS
+        sync: false
