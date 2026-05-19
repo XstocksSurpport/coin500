@@ -15,7 +15,7 @@
 
 ```env
 RESEND_API_KEY=re_你的密钥
-EMAIL_FROM=Aegisai <onboarding@resend.dev>
+EMAIL_FROM=Aegisai <noreply@aegisai.sbs>
 AUTH_SECRET=至少32位随机字符串
 ```
 
@@ -47,7 +47,7 @@ EMAIL_FROM=Aegisai <noreply@你的域名.com>
 | 变量 | 说明 |
 |------|------|
 | `RESEND_API_KEY` | Resend API 密钥 |
-| `EMAIL_FROM` | 发件人，如 `Aegisai <onboarding@resend.dev>` |
+| `EMAIL_FROM` | 发件人，如 `Aegisai <noreply@aegisai.sbs>` |
 | `AUTH_SECRET` | 会话签名密钥（随机长字符串） |
 | `NEXT_PUBLIC_EVM_WALLET_ADDRESS` | EVM 充值地址 |
 | `NEXT_PUBLIC_SOL_WALLET_ADDRESS` | Solana 充值地址 |
