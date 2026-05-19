@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isValidEmail } from "@/lib/auth-storage";
 import { isEmailConfigured, sendVerificationEmail } from "@/lib/email";
+import { mapEmailSendError } from "@/lib/email-errors";
 import {
   canResend,
   createVerificationToken,
@@ -53,7 +54,7 @@ export async function POST(req: Request) {
     const message = e instanceof Error ? e.message : "send failed";
     console.error("[send-code]", message);
     return NextResponse.json(
-      { error: "\u9a8c\u8bc1\u7801\u53d1\u9001\u5931\u8d25\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5" },
+      { error: mapEmailSendError(message) },
       { status: 502 },
     );
   }
